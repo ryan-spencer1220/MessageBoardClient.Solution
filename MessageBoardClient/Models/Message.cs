@@ -19,8 +19,30 @@ namespace MessageBoardClient.Models
       var apiCallTask = ApiHelper.GetAll();
       var result = apiCallTask.Result;
 
-      JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
-      List<Message> messageList = JsonConvert.DeserializeObject<List<Message>>(jsonResponse.ToString());
+      // Console.WriteLine("result = " + result[5]);
+      // var arr = JArray.Parse(result);
+      // Console.WriteLine("obj = " + arr);
+      // var newResult = obj.data;
+
+      var resultParse = JObject.Parse(result);
+      JArray newResult = null; 
+
+      foreach (KeyValuePair<string, JToken> kvp in resultParse)
+      {
+        if ( kvp.Key == "data" )
+        {
+          // Console.WriteLine("Key = {0}, Value = {1}",
+          // kvp.Key, kvp.Value);
+
+          newResult = (JArray)kvp.Value;
+          Console.WriteLine(newResult);
+        }
+      }
+
+      // JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(newesult);
+      // Console.WriteLine("jsonResponse = " + jsonResponse);
+
+      List<Message> messageList = JsonConvert.DeserializeObject<List<Message>>(newResult.ToString());
 
       return messageList;
     }

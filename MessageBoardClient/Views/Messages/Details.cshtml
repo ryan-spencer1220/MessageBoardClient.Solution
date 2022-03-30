@@ -1,7 +1,8 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-    
+
+<h1>Message Information</h1>
     <ul>
       <li>ID: @Model.MessageId</li>
       <li>Date: @Model.Date</li>
@@ -10,3 +11,10 @@
       <li>Author: @Model.Author</li>
       <li>Group: @Model.Group</li>
     </ul>
+
+<a href="/Messages/Edit/@(Model.MessageId)"><p>Edit</p></a>
+<br>
+
+<a href="/Messages"><p>Return</p></a>
+
+<a href="/Messages/Delete/@(Model.MessageId)"><p>Delete Message</p></a>

@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Edit Info:</h1>
+<form action="/Messages/Details/@(Model.MessageId)" method="post">
+  <label for="date">Message's Date</label>
+  <input id="date" date="date" type="date" value="@(Model.Date)">
+  <label for="title">Message's Title</label>
+  <input id="title" name="title" type="text" value="@(Model.Title)">
+  <label for="body">Message's Body</label>
+  <input id="body" name="body" type="text" value="@(Model.Body)">
+  <label for="author">Message's Author</label>
+  <input id="author" name="author" type="text" value="@(Model.Author)">
+  <label for="group">Message's Group</label>
+  <input id="group" name="group" type="text" value="@(Model.Group)">
+  <button type="submit">Go!</button>
+</form>
+
+<a href="/Messages/Details/@(Model.MessageId)"><p>Return to Details</p></a>

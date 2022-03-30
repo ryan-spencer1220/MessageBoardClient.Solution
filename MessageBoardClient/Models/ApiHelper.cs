@@ -1,5 +1,7 @@
 using System.Threading.Tasks;
 using RestSharp;
+using Newtonsoft.Json.Linq;
+
 
 namespace MessageBoardClient.Models
 {
@@ -10,6 +12,7 @@ namespace MessageBoardClient.Models
       RestClient client = new RestClient("http://localhost:5000/api/1.0");
       RestRequest request = new RestRequest($"messages", Method.GET);
       var response = await client.ExecuteTaskAsync(request);
+
       return response.Content;
     }
 

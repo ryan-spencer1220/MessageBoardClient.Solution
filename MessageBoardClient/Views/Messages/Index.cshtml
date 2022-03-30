@@ -2,29 +2,40 @@
     ViewData["Title"] = "Home Page";
 }
 
-<form action="/messages" method="post">
-  <label for="date">Date</label>
-  <input id="date" name="date" type="text">
-  <label for="title">Title</label>  
-  <input id="title" name="title" type="text">
-  <label for="bodye">Body</label>
-  <input id="body" name="body" type="text">
-  <label for="author">Author</label>
-  <input id="author" name="author" type="text">
-  <label for="group">Group</label>
-  <input id="group" name="group" type="text">
-</form>
+@using Newtonsoft.Json.Linq;
+
+<div class="container-lg">
+  <div class="text-center">
+    <h4 class="display-4 lh-1 mb-4">Add New Post!</h4>
+    <p class="lead">Add your contact inforation and message body here:</p>
+  </div>
+    <div class="row justify-content-center my-5">
+      <div class="col-lg-6">
+        <form action="/messages" method="post">
+          <label for="date" class="form-label">Date: </label>
+          <input id="date" name="date" type="date">
+          <label for="title" class="form-label">Title: </label>  
+          <input id="title" name="title" type="text">
+          <label for="bodye" class="form-label">Body: </label>
+          <input id="body" name="body" type="text">
+          <label for="author" class="form-label">Author: </label>
+          <input id="author" name="author" type="text">
+          <label for="group" class="form-label">Group: </label>
+          <input id="group" name="group" type="text">
+          <button type="submit">Go!</button>
+        </form>
+      </div>
+    </div>
+</div>
 
 <ol>
   @foreach (Message message in Model)
   {
     <ul>
-      <li>ID: @message.MessageId</li>
       <li>Date: @message.Date</li>
       <li>Title: @message.Title</li>
-      <li>Body: @message.Body</li>
       <li>Author: @message.Author</li>
-      <li>Group: @message.Group</li>
     </ul>
+        <a href="/Messages/Details/@(message.MessageId)"><p>View Details</p></a>
   }
 </ol>
