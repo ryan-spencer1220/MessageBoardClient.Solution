@@ -38,6 +38,7 @@ namespace MessageBoardClient.Controllers
     [HttpPost]
     public IActionResult Details(int id, Message message)
     {
+      Console.WriteLine(message.MessageId);
       message.MessageId = id;
       Message.Put(message);
       return RedirectToAction("Details", id);
